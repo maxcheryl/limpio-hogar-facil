@@ -7,12 +7,12 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
             <Sparkles className="h-6 w-6" />
-            <span className="text-2xl font-bold">Limpieza Hogar</span>
+            <span className="text-2xl font-bold">CasaLimpia</span>
           </div>
           
           <div className="text-center md:text-left">
             <p className="text-white/80">
-              © 2024 Limpieza Hogar. Todos los derechos reservados.
+              © 2024 CasaLimpia. Todos los derechos reservados.
             </p>
           </div>
         </div>
