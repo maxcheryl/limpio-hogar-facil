@@ -1,194 +1,118 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Mail, MessageSquare, Phone } from "lucide-react";
-import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
-import { z } from "zod";
+import { Card, CardContent } from "@/components/ui/card";
+import { Mail, MessageSquare, Phone, HelpCircle, FileText, Users } from "lucide-react";
 
-const contactSchema = z.object({
-  name: z.string().trim().min(1, { message: "El nombre es requerido" }).max(100, { message: "El nombre debe tener menos de 100 caracteres" }),
-  email: z.string().trim().email({ message: "Email inválido" }).max(255, { message: "El email debe tener menos de 255 caracteres" }),
-  phone: z.string().trim().min(1, { message: "El teléfono es requerido" }).max(20, { message: "El teléfono debe tener menos de 20 caracteres" }),
-  message: z.string().trim().min(1, { message: "El mensaje es requerido" }).max(1000, { message: "El mensaje debe tener menos de 1000 caracteres" }),
-});
+const supportOptions = [
+  {
+    icon: Phone,
+    title: "Soporte Telefónico",
+    description: "Llámanos para asistencia inmediata",
+    contact: "(123) 456-7890",
+    availability: "Lun - Vie: 8AM - 6PM",
+  },
+  {
+    icon: Mail,
+    title: "Email de Soporte",
+    description: "Escríbenos tu consulta",
+    contact: "soporte@casalimpia.com",
+    availability: "Respuesta en 24 horas",
+  },
+  {
+    icon: MessageSquare,
+    title: "Chat en Vivo",
+    description: "Chatea con nuestro equipo",
+    contact: "Disponible en la app",
+    availability: "Horario laboral",
+  },
+  {
+    icon: HelpCircle,
+    title: "Preguntas Frecuentes",
+    description: "Encuentra respuestas rápidas",
+    contact: "Centro de ayuda",
+    availability: "Disponible 24/7",
+  },
+  {
+    icon: FileText,
+    title: "Guías y Tutoriales",
+    description: "Aprende a usar la plataforma",
+    contact: "Documentación completa",
+    availability: "Disponible 24/7",
+  },
+  {
+    icon: Users,
+    title: "Soporte Especializado",
+    description: "Para profesionales y empresas",
+    contact: "empresas@casalimpia.com",
+    availability: "Atención personalizada",
+  },
+];
 
 const ContactSupport = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
-  const [errors, setErrors] = useState<Record<string, string>>({});
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    const result = contactSchema.safeParse(formData);
-    
-    if (!result.success) {
-      const fieldErrors: Record<string, string> = {};
-      result.error.errors.forEach((error) => {
-        if (error.path[0]) {
-          fieldErrors[error.path[0].toString()] = error.message;
-        }
-      });
-      setErrors(fieldErrors);
-      return;
-    }
-
-    setErrors({});
-    toast({
-      title: "Mensaje Enviado",
-      description: "Nos pondremos en contacto contigo pronto.",
-    });
-    setFormData({ name: "", email: "", phone: "", message: "" });
-  };
-
-  const handleChange = (field: string, value: string) => {
-    setFormData({ ...formData, [field]: value });
-    if (errors[field]) {
-      setErrors({ ...errors, [field]: "" });
-    }
-  };
-
   return (
-    <section id="contact" className="py-20 bg-secondary/30">
+    <section id="support" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Contacto / Soporte
+            Centro de Soporte
           </h2>
           <p className="text-xl text-muted-foreground">
-            ¿Tienes dudas? Escríbenos y te ayudamos a agendar tu primer servicio
+            Estamos aquí para ayudarte. Elige el canal de soporte que mejor se adapte a tus necesidades
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <Card className="border-2 hover:shadow-lg transition-shadow">
-            <CardContent className="pt-6">
-              <div className="flex flex-col items-center text-center gap-4">
-                <div className="p-4 rounded-full bg-primary/10">
-                  <Phone className="h-8 w-8 text-primary" />
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {supportOptions.map((option, index) => (
+            <Card
+              key={index}
+              className="border-2 hover:shadow-lg hover:border-primary/50 transition-all duration-300 group cursor-pointer"
+            >
+              <CardContent className="pt-6">
+                <div className="flex flex-col items-center text-center gap-4">
+                  <div className="p-4 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 group-hover:from-primary/20 group-hover:to-accent/20 transition-colors">
+                    <option.icon className="h-8 w-8 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-xl mb-2 text-foreground">
+                      {option.title}
+                    </h3>
+                    <p className="text-muted-foreground mb-3">
+                      {option.description}
+                    </p>
+                    <p className="font-medium text-foreground">
+                      {option.contact}
+                    </p>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      {option.availability}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">Teléfono</h3>
-                  <p className="text-muted-foreground">(123) 456-7890</p>
-                  <p className="text-sm text-muted-foreground mt-1">Lun - Vie: 8AM - 6PM</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
 
-          <Card className="border-2 hover:shadow-lg transition-shadow">
-            <CardContent className="pt-6">
-              <div className="flex flex-col items-center text-center gap-4">
-                <div className="p-4 rounded-full bg-primary/10">
-                  <Mail className="h-8 w-8 text-primary" />
+        <div className="mt-16 text-center max-w-2xl mx-auto">
+          <Card className="border-2 bg-gradient-to-br from-primary/5 to-accent/5">
+            <CardContent className="pt-6 pb-6">
+              <h3 className="text-2xl font-bold text-foreground mb-3">
+                ¿Necesitas Ayuda Urgente?
+              </h3>
+              <p className="text-muted-foreground mb-4">
+                Nuestro equipo de soporte está disponible para resolver tus dudas y ayudarte a aprovechar al máximo CasaLimpia
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <div className="flex items-center gap-2">
+                  <Phone className="h-5 w-5 text-primary" />
+                  <span className="font-medium text-foreground">(123) 456-7890</span>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">Email</h3>
-                  <p className="text-muted-foreground">info@casalimpia.com</p>
-                  <p className="text-sm text-muted-foreground mt-1">Respuesta en 24h</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-2 hover:shadow-lg transition-shadow">
-            <CardContent className="pt-6">
-              <div className="flex flex-col items-center text-center gap-4">
-                <div className="p-4 rounded-full bg-primary/10">
-                  <MessageSquare className="h-8 w-8 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">Chat en Vivo</h3>
-                  <p className="text-muted-foreground">Soporte inmediato</p>
-                  <p className="text-sm text-muted-foreground mt-1">Horario laboral</p>
+                <div className="hidden sm:block text-muted-foreground">•</div>
+                <div className="flex items-center gap-2">
+                  <Mail className="h-5 w-5 text-primary" />
+                  <span className="font-medium text-foreground">soporte@casalimpia.com</span>
                 </div>
               </div>
             </CardContent>
           </Card>
         </div>
-
-        <Card className="border-2 max-w-2xl mx-auto mt-12">
-          <CardHeader>
-            <CardTitle className="text-2xl">Envíanos un Mensaje</CardTitle>
-            <CardDescription>
-              Completa el formulario y te responderemos a la brevedad
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="space-y-2">
-                <Label htmlFor="name">Nombre Completo</Label>
-                <Input
-                  id="name"
-                  value={formData.name}
-                  onChange={(e) => handleChange("name", e.target.value)}
-                  placeholder="Tu nombre completo"
-                  className={errors.name ? "border-destructive" : ""}
-                />
-                {errors.name && (
-                  <p className="text-sm text-destructive">{errors.name}</p>
-                )}
-              </div>
-              
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => handleChange("email", e.target.value)}
-                  placeholder="tu@email.com"
-                  className={errors.email ? "border-destructive" : ""}
-                />
-                {errors.email && (
-                  <p className="text-sm text-destructive">{errors.email}</p>
-                )}
-              </div>
-              
-              <div className="space-y-2">
-                <Label htmlFor="phone">Teléfono</Label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => handleChange("phone", e.target.value)}
-                  placeholder="(123) 456-7890"
-                  className={errors.phone ? "border-destructive" : ""}
-                />
-                {errors.phone && (
-                  <p className="text-sm text-destructive">{errors.phone}</p>
-                )}
-              </div>
-              
-              <div className="space-y-2">
-                <Label htmlFor="message">Mensaje</Label>
-                <Textarea
-                  id="message"
-                  value={formData.message}
-                  onChange={(e) => handleChange("message", e.target.value)}
-                  placeholder="¿En qué podemos ayudarte?"
-                  rows={4}
-                  className={errors.message ? "border-destructive" : ""}
-                />
-                {errors.message && (
-                  <p className="text-sm text-destructive">{errors.message}</p>
-                )}
-              </div>
-              
-              <Button type="submit" className="w-full" size="lg">
-                Enviar Mensaje
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
       </div>
     </section>
   );
