@@ -14,10 +14,10 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { label: "Inicio", section: "hero" },
-    { label: "Servicios", section: "services" },
-    { label: "Por qué Elegirnos", section: "benefits" },
-    { label: "Contacto", section: "contact" },
+    //{ label: "Inicio", section: "hero" },
+    //{ label: "Servicios", section: "services" },
+    //{ label: "Por qué Elegirnos", section: "benefits" },
+    //{ label: "Contacto", section: "contact" },
   ];
 
   return (
