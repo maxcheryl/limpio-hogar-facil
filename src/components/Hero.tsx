@@ -29,8 +29,8 @@ const Hero = () => {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
-            Tu Hogar
-            <span className="block mt-2">Impecable y Reluciente</span>
+            Tu Casa Limpia
+            <span className="block mt-2">Sin complicaciones</span>
           </h1>
 
           <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto">
@@ -54,7 +54,7 @@ const Hero = () => {
                 document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              Ver Servicios
+              Ofrecer Servicios
             </Button>
           </div>
         </div>
