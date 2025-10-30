@@ -5,6 +5,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import deepCleanImage from "@/assets/service-deep-clean.jpg";
 import regularImage from "@/assets/service-regular.jpg";
 import officeImage from "@/assets/service-office.jpg";
@@ -83,7 +85,7 @@ const Services = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2">
+                <ul className="space-y-2 mb-4">
                   {service.features.map((feature, idx) => (
                     <li
                       key={idx}
@@ -94,6 +96,13 @@ const Services = () => {
                     </li>
                   ))}
                 </ul>
+                {index === 0 && (
+                  <Link to="/workers">
+                    <Button className="w-full" size="lg">
+                      Ver Profesionales
+                    </Button>
+                  </Link>
+                )}
               </CardContent>
             </Card>
           ))}
