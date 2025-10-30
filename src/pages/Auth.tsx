@@ -104,7 +104,6 @@ const Auth = () => {
                       <SelectContent>
                         <SelectItem value="client">Cliente</SelectItem>
                         <SelectItem value="worker">Trabajador</SelectItem>
-                        <SelectItem value="admin">Administrador</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -113,7 +112,7 @@ const Auth = () => {
                     <Input
                       id="register-name"
                       type="text"
-                      placeholder="Juan Pérez"
+                      placeholder="Dali Morales"
                       required
                     />
                   </div>
@@ -155,18 +154,10 @@ const Auth = () => {
             </Tabs>
           </CardContent>
         </Card>
-
-        <div className="mt-6 p-4 bg-secondary/50 rounded-lg border">
-          <h3 className="font-semibold mb-2 text-sm">Tipos de Usuario:</h3>
-          <ul className="text-sm text-muted-foreground space-y-1">
-            <li>• <strong>Cliente:</strong> Reserva y gestiona servicios de limpieza</li>
-            <li>• <strong>Trabajador:</strong> Gestiona disponibilidad y servicios</li>
-            <li>• <strong>Administrador:</strong> Supervisa operaciones y reportes</li>
-          </ul>
-        </div>
       </div>
     </div>
   );
 };
 
 export default Auth;
+
