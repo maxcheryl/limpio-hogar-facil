@@ -1,29 +1,50 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import deepCleanImage from "@/assets/service-deep-clean.jpg";
 import regularImage from "@/assets/service-regular.jpg";
 import officeImage from "@/assets/service-office.jpg";
 
 const services = [
   {
-    title: "Limpieza Profunda",
+    title: "Contratar Servicios",
     description:
-      "Limpieza detallada de cada rincón de tu hogar. Ideal para preparar eventos o simplemente mantener tu casa impecable.",
+      "Encuentra y reserva fácilmente profesionales de limpieza verificados. Personaliza tu pedido según tus necesidades y disponibilidad.",
     image: deepCleanImage,
-    features: ["Todas las habitaciones", "Cocina y baños", "Ventanas y espejos", "Áreas de difícil acceso"],
+    features: [
+      "Filtra por tipo de limpieza y horario",
+      "Consulta perfiles y valoraciones",
+      "Reserva en minutos",
+      "Confirmación inmediata del servicio",
+    ],
   },
   {
-    title: "Limpieza Regular",
+    title: "Seguridad en Transacciones",
     description:
-      "Mantenimiento periódico de tu hogar. Servicio semanal o quincenal para mantener todo en orden.",
+      "Tu seguridad es nuestra prioridad. Protegemos tanto a clientes como a profesionales con un sistema de pagos seguro y verificado.",
     image: regularImage,
-    features: ["Aspirado y trapeado", "Superficies y muebles", "Baños sanitizados", "Organización general"],
+    features: [
+      "Pagos encriptados",
+      "Verificación de identidad",
+      "Protección contra fraudes",
+      "Soporte ante disputas",
+    ],
   },
   {
-    title: "Limpieza de Oficinas",
+    title: "Ofrecer Servicios",
     description:
-      "Servicios especializados para espacios comerciales. Mantén tu oficina profesional y acogedora.",
+      "Regístrate como profesional y comienza a ofrecer tus servicios de limpieza. Gestiona tus reservas, pagos y evaluaciones desde un solo lugar.",
     image: officeImage,
-    features: ["Áreas de trabajo", "Salas de reuniones", "Cocinas corporativas", "Espacios comunes"],
+    features: [
+      "Crea tu perfil profesional",
+      "Recibe solicitudes de clientes",
+      "Administra tus horarios",
+      "Recibe pagos seguros por cada trabajo",
+    ],
   },
 ];
 
@@ -33,10 +54,11 @@ const Services = () => {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Nuestros Servicios
+            Simplificamos el Mundo de la Limpieza
           </h2>
           <p className="text-xl text-muted-foreground">
-            Ofrecemos soluciones de limpieza adaptadas a tus necesidades específicas
+            Gestiona tus servicios de forma eficiente y segura, tanto si
+            contratas como si ofreces
           </p>
         </div>
 
@@ -56,12 +78,17 @@ const Services = () => {
               </div>
               <CardHeader>
                 <CardTitle className="text-2xl">{service.title}</CardTitle>
-                <CardDescription className="text-base">{service.description}</CardDescription>
+                <CardDescription className="text-base">
+                  {service.description}
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <li
+                      key={idx}
+                      className="flex items-center gap-2 text-sm text-muted-foreground"
+                    >
                       <div className="h-1.5 w-1.5 rounded-full bg-accent" />
                       {feature}
                     </li>
