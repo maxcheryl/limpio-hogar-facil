@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 import {
   Mail,
   MessageSquare,
@@ -33,6 +34,8 @@ const supportOptions = [
 ];
 
 const ContactSupport = () => {
+  const navigate = useNavigate();
+
   return (
     <section id="support" className="py-24 bg-background">
       <div className="container mx-auto px-4">
@@ -50,7 +53,14 @@ const ContactSupport = () => {
           {supportOptions.map((option, index) => (
             <Card
               key={index}
-              className="border-2 hover:shadow-lg hover:border-primary/50 transition-all duration-300 group cursor-pointer"
+              onClick={() => {
+                if (index === 2) {
+                  navigate("/faq");
+                }
+              }}
+              className={`border-2 hover:shadow-lg hover:border-primary/50 transition-all duration-300 group ${
+                index === 2 ? "cursor-pointer" : ""
+              }`}
             >
               <CardContent className="pt-8 pb-8">
                 <div className="flex flex-col items-center text-center gap-6">
