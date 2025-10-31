@@ -1,12 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Sparkles } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import heroImage from "@/assets/hero-cleaning.jpg";
 
 const Hero = () => {
-  const handleBooking = () => {
-    const contactSection = document.getElementById("contact");
-    contactSection?.scrollIntoView({ behavior: "smooth" });
-  };
+  const navigate = useNavigate();
 
   return (
     <section id="hero" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-16">
@@ -41,7 +39,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Button
               size="lg"
-              onClick={handleBooking}
+              onClick={() => navigate("/workers")}
               className="bg-accent hover:bg-accent/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 text-lg px-8 py-6"
             >
               Solicitar Servicio
