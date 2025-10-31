@@ -34,10 +34,10 @@ const supportOptions = [
 
 const ContactSupport = () => {
   return (
-    <section id="support" className="py-20 bg-background">
+    <section id="support" className="py-24 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Centro de Soporte
           </h2>
           <p className="text-xl text-muted-foreground">
@@ -46,30 +46,32 @@ const ContactSupport = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {supportOptions.map((option, index) => (
             <Card
               key={index}
               className="border-2 hover:shadow-lg hover:border-primary/50 transition-all duration-300 group cursor-pointer"
             >
-              <CardContent className="pt-6">
-                <div className="flex flex-col items-center text-center gap-4">
-                  <div className="p-4 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 group-hover:from-primary/20 group-hover:to-accent/20 transition-colors">
-                    <option.icon className="h-8 w-8 text-primary" />
+              <CardContent className="pt-8 pb-8">
+                <div className="flex flex-col items-center text-center gap-6">
+                  <div className="p-5 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 group-hover:from-primary/20 group-hover:to-accent/20 transition-colors">
+                    <option.icon className="h-10 w-10 text-primary" />
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-xl mb-2 text-foreground">
+                  <div className="space-y-3">
+                    <h3 className="font-semibold text-xl text-foreground">
                       {option.title}
                     </h3>
-                    <p className="text-muted-foreground mb-3">
+                    <p className="text-muted-foreground">
                       {option.description}
                     </p>
-                    <p className="font-medium text-foreground">
+                    <p className="font-medium text-foreground text-lg">
                       {option.contact}
                     </p>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      {option.availability}
-                    </p>
+                    {option.availability && (
+                      <p className="text-sm text-muted-foreground">
+                        {option.availability}
+                      </p>
+                    )}
                   </div>
                 </div>
               </CardContent>

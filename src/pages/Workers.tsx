@@ -156,10 +156,10 @@ const Workers = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <section className="py-20">
+      <section className="py-24">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Encuentra tu Profesional Ideal
             </h1>
             <p className="text-xl text-muted-foreground">
@@ -168,10 +168,11 @@ const Workers = () => {
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2 justify-center mb-8">
+          <div className="flex flex-wrap gap-3 justify-center mb-12">
             <Button
               variant={selectedLocation === "all" ? "default" : "outline"}
               onClick={() => setSelectedLocation("all")}
+              size="lg"
             >
               Todas las zonas
             </Button>
@@ -180,6 +181,7 @@ const Workers = () => {
                 key={location}
                 variant={selectedLocation === location ? "default" : "outline"}
                 onClick={() => setSelectedLocation(location)}
+                size="lg"
               >
                 {location}
               </Button>
