@@ -76,16 +76,12 @@ const OfferServices = () => {
       
       toast({
         title: "¡Solicitud enviada!",
-        description: "Revisaremos tu perfil y te contactaremos pronto.",
+        description: "Inicia sesión para completar tu registro.",
       });
 
-      // Resetear formulario
-      e.currentTarget.reset();
-      setSelectedServices([]);
-      
       setTimeout(() => {
-        navigate("/");
-      }, 2000);
+        navigate("/auth");
+      }, 1500);
     } catch (error) {
       if (error instanceof z.ZodError) {
         toast({
