@@ -99,7 +99,7 @@ const Services = () => {
                 {index === 0 && (
                   <Link to="/workers">
                     <Button className="w-full" size="lg">
-                      Ver Profesionales
+                      Solicitar Servicio
                     </Button>
                   </Link>
                 )}

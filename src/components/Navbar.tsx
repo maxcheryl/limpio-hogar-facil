@@ -58,12 +58,6 @@ const Navbar = () => {
               <LogIn className="h-4 w-4 mr-2" />
               Iniciar Sesión
             </Button>
-            <Button
-              onClick={() => scrollToSection("contact")}
-              className="bg-gradient-to-r from-primary to-accent hover:opacity-90 text-white shadow-md"
-            >
-              Solicitar Servicio
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -96,12 +90,6 @@ const Navbar = () => {
                 >
                   <LogIn className="h-4 w-4 mr-2" />
                   Iniciar Sesión
-                </Button>
-                <Button
-                  onClick={() => scrollToSection("contact")}
-                  className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 text-white"
-                >
-                  Solicitar Servicio
                 </Button>
               </div>
             </div>
