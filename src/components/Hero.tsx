@@ -48,9 +48,7 @@ const Hero = () => {
               size="lg"
               variant="outline"
               className="bg-white/10 backdrop-blur-sm text-white border-2 border-white hover:bg-white hover:text-primary transition-all duration-300 text-lg px-8 py-6"
-              onClick={() => {
-                document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
-              }}
+              onClick={() => navigate("/offer-services")}
             >
               Ofrecer Servicios
             </Button>
